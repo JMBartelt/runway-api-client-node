@@ -1,6 +1,9 @@
+
 import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -9,8 +12,10 @@ const app = express();
 app.use(express.json({limit: '2mb'}));
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 app.post('/generate', async (req, res) => {
-  const { imageUrl, prompt, ratio, apiKey } = req.body;
+  const { imageUrl, prompt, ratio } = req.body;
+  const apiKey = process.env.RUNWAY_API_KEY;
   if (!imageUrl || !prompt || !apiKey || !ratio) {
     return res.status(400).json({ error: 'Missing required fields' });
   }

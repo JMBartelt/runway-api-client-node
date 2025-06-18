@@ -55,11 +55,11 @@ function addVideo(url) {
 
 loadSaved();
 
+
 async function generate() {
-  const apiKey = document.getElementById('apiKey').value.trim();
   const imageUrl = document.getElementById('imageUrl').value.trim();
   const prompt = document.getElementById('prompt').value.trim();
-  if(!apiKey || !imageUrl || !prompt) {
+  if(!imageUrl || !prompt) {
     document.getElementById('status').textContent = 'Fill in all fields.';
     return;
   }
@@ -70,7 +70,7 @@ async function generate() {
     const resp = await fetch('/generate', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({apiKey, imageUrl, prompt, ratio})
+      body: JSON.stringify({imageUrl, prompt, ratio})
     });
     const data = await resp.json();
     if(!resp.ok) throw new Error(data.error || 'Request failed');
