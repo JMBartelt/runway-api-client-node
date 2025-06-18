@@ -1,0 +1,17 @@
+{
+  "name": "runway-video-webapp",
+  "version": "1.0.0",
+  "description": "Node.js webapp for generating videos with Runway Gen-4 API",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "keywords": ["runway", "video", "webapp"],
+  "author": "",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

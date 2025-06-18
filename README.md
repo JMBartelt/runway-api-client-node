@@ -1,28 +1,28 @@
-<img src="tutorial-images/demo.gif" alt="demo.gif" style="max-width: 600px;">
+# Runway Video Webapp
 
-# Runway Generate Video Chrome Extension
+This project is a simple Node.js web application that communicates with the Runway Gen‑4 Video API. It lets you generate videos from any image URL via a browser based interface.
 
-This Chrome extension connects to the Gen-4 Video API, allowing you to generate a video from any image on a webpage.
+## Setup
 
-## Installation
+1. Install dependencies
 
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/runwayml/chrome-extension-tutorial
-    ```
-2.  **Open Chrome Extensions:**
-    Open Google Chrome and navigate to `chrome://extensions`.
-3.  **Enable Developer Mode:**
-    In the top right corner of the Extensions page, toggle the **Developer mode** switch to the **on** position.
-4.  **Load Unpacked Extension:**
-    Click the **Load unpacked** button that appears.
-    Navigate to the directory where you cloned the repository and select the `code` folder.
+   ```bash
+   npm install
+   ```
 
-The extension will now be installed and visible in your Chrome extensions list.
+2. Start the web server
+
+   ```bash
+   npm start
+   ```
+
+3. Open your browser and navigate to [http://localhost:3000](http://localhost:3000).
+
+You will be prompted to enter your Runway API key along with the image URL and prompt text. Generated videos are stored in your browser's local storage so they will appear again when you refresh the page.
 
 ## Obtaining a Runway API Key
 
-To use the video generation features, you will need a [Runway API account](https://dev.runwayml.com/), key, and credits. Set this up by following the [Runway API Quickstart](https://docs.dev.runwayml.com/guides/using-the-api/) guide.
+To use the video generation features you will need a [Runway API account](https://dev.runwayml.com/), key and credits. Follow the [Runway API Quickstart](https://docs.dev.runwayml.com/guides/using-the-api/) guide.
 
 ## Learn More
 
