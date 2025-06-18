@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Runway Video Generator</title>
+  <style>
+    body {font-family: Arial, sans-serif; max-width: 700px; margin: 40px auto;}
+    input, button {padding: 8px; margin-bottom: 8px; width: 100%; box-sizing:border-box;}
+    video {max-width:100%; margin-top:20px;}
+    .video-item {position:relative; margin-bottom:20px;}
+    .remove {position:absolute; top:5px; right:5px; cursor:pointer; background:#fff; border:1px solid #ccc; border-radius:3px; padding:2px 5px;}
+  </style>
+</head>
+<body>
+  <h1>Runway Video Generator</h1>
+  <div>
+    <label>Runway API Key</label>
+    <input type="password" id="apiKey" placeholder="Enter API Key" />
+    <label>Image URL</label>
+    <input type="text" id="imageUrl" placeholder="https://example.com/image.jpg" />
+    <label>Prompt</label>
+    <input type="text" id="prompt" placeholder="Describe the animation" />
+    <button id="generate">Generate</button>
+  </div>
+  <div id="status"></div>
+  <div id="videos"></div>
+  <script src="script.js"></script>
+</body>
+</html>
