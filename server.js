@@ -14,7 +14,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.post('/generate', async (req, res) => {
-  const { imageUrl, prompt, ratio } = req.body;
+  const { imageUrl, prompt, ratio, seed, model, duration } = req.body;
   const apiKey = process.env.RUNWAY_API_KEY;
   if (!imageUrl || !prompt || !apiKey || !ratio) {
     return res.status(400).json({ error: 'Missing required fields' });
@@ -27,13 +27,12 @@ app.post('/generate', async (req, res) => {
         'Authorization': `Bearer ${apiKey}`,
         'X-Runway-Version': '2024-11-06',
         'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
+      },      body: JSON.stringify({
         promptImage: imageUrl,
-        seed: Math.floor(Math.random() * 1000000000),
-        model: 'gen4_turbo',
+        seed: seed || Math.floor(Math.random() * 1000000000),
+        model: model || 'gen4_turbo',
         promptText: prompt,
-        duration: 5,
+        duration: duration || 5,
         ratio
       })
     });

@@ -59,6 +59,11 @@ loadSaved();
 async function generate() {
   const imageUrl = document.getElementById('imageUrl').value.trim();
   const prompt = document.getElementById('prompt').value.trim();
+  const duration = parseInt(document.getElementById('duration').value);
+  const model = document.getElementById('model').value;
+  const seedInput = document.getElementById('seed').value.trim();
+  const seed = seedInput ? parseInt(seedInput) : null;
+  
   if(!imageUrl || !prompt) {
     document.getElementById('status').textContent = 'Fill in all fields.';
     return;
@@ -67,10 +72,16 @@ async function generate() {
   try {
     const {width, height} = await getImageSize(imageUrl);
     const ratio = findClosestRatio(width, height);
+    
+    const requestBody = {imageUrl, prompt, ratio, duration, model};
+    if (seed !== null) {
+      requestBody.seed = seed;
+    }
+    
     const resp = await fetch('/generate', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({imageUrl, prompt, ratio})
+      body: JSON.stringify(requestBody)
     });
     const data = await resp.json();
     if(!resp.ok) throw new Error(data.error || 'Request failed');

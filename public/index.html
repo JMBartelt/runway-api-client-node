@@ -3,22 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <title>Runway Video Generator</title>
-  <style>
-    body {font-family: Arial, sans-serif; max-width: 700px; margin: 40px auto;}
-    input, button {padding: 8px; margin-bottom: 8px; width: 100%; box-sizing:border-box;}
+  <style>    body {font-family: Arial, sans-serif; max-width: 700px; margin: 40px auto;}
+    input, button, select {padding: 8px; margin-bottom: 8px; width: 100%; box-sizing:border-box;}
+    label {display: block; margin-top: 10px; margin-bottom: 4px; font-weight: bold;}
     video {max-width:100%; margin-top:20px;}
     .video-item {position:relative; margin-bottom:20px;}
     .remove {position:absolute; top:5px; right:5px; cursor:pointer; background:#fff; border:1px solid #ccc; border-radius:3px; padding:2px 5px;}
   </style>
 </head>
 <body>
-  <h1>Runway Video Generator</h1>
-  <div>
+  <h1>Runway Video Generator</h1>  <div>
     <!-- API Key input removed, now loaded from server environment -->
     <label>Image URL</label>
     <input type="text" id="imageUrl" placeholder="https://example.com/image.jpg" />
+    
     <label>Prompt</label>
     <input type="text" id="prompt" placeholder="Describe the animation" />
+    
+    <label>Duration (seconds)</label>
+    <select id="duration">
+      <option value="5" selected>5 seconds</option>
+      <option value="10">10 seconds</option>
+    </select>
+    
+    <label>Model</label>
+    <select id="model">
+      <option value="gen4_turbo" selected>Gen4 Turbo (faster)</option>
+      <option value="gen4">Gen4 (higher quality)</option>
+    </select>
+    
+    <label>Seed (optional - leave empty for random)</label>
+    <input type="number" id="seed" placeholder="Random seed for reproducible results" />
+    
     <button id="generate">Generate</button>
   </div>
   <div id="status"></div>
